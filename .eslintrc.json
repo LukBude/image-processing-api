@@ -20,6 +20,12 @@
         "prettier"
     ],
     "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "no-var": "error",
         "prefer-const": "error"
     }
