@@ -19,3 +19,5 @@ server.use((err: Error, _req: express.Request, res: express.Response, _next: exp
 server.listen(port, () => {
   console.log(`server started at 'http://localhost:${port}`);
 });
+
+export default server;
