@@ -2,7 +2,7 @@
 
 This project implements a simple REST API, which allows for retrieving a resized version of an image stored on the server. 
 
-The server stores its images in the following directory: [resources/images](https://github.com/LukBude/image-processing-api/tree/main/resources/images)
+The server stores its images in the following directory: [resources/images](https://github.com/LukBude/image-processing-api/tree/main/resources/images).
 The available images' names are: 
 * encenadaport
 * fjord
