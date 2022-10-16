@@ -1,6 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
+import fs from 'fs';
+import path from 'path';
 import rateLimit from 'express-rate-limit';
 import routes from './route/routes';
 import { HttpStatusCode } from './error/HttpStatusCode';
@@ -9,12 +11,16 @@ import { ApiError } from './error/ApiError';
 const server = express();
 const port = 3000;
 
+const endpointAccessLogStream = fs.createWriteStream(path.resolve('logs', 'endpointAccess.log'), {
+  flags: 'a'
+});
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100
 });
 
-server.use(morgan('common'));
+server.use(morgan('common', { stream: endpointAccessLogStream }));
 server.use(helmet());
 server.use(limiter);
 
