@@ -22,4 +22,4 @@ http://localhost:3000?name=fjord&width=300&height=300
 
 ## run jasmine tests
 
-Both the endpoint and the resize service have been tested using jasmine. You can execute all unit tests by running the npm script "test".
+Both the endpoint and the image-resize service have been tested using jasmine. You can execute all unit tests by running the npm script "test".
