@@ -17,6 +17,7 @@ describe('Test image service', () => {
     });
 
     it('should return existing image', async () => {
+      await createImageIfNotExists(resizedImageFilePath, 'fjord', 300, 300);
       const existingImageBirthtime = (await fsPromises.stat(resizedImageFilePath)).birthtime;
       await ImageService.getImage('fjord', 300, 300);
       expect(existingImageBirthtime).toEqual((await fsPromises.stat(resizedImageFilePath)).birthtime);
@@ -30,3 +31,13 @@ describe('Test image service', () => {
     });
   });
 });
+
+async function createImageIfNotExists(path: string, name: string, width: number, height: number): Promise<void> {
+  try {
+    await fsPromises.access(path);
+    await fsPromises.unlink(path);
+  } catch (error) {
+    console.log("inside error");
+    await ImageService.getImage(name, width, height);
+  }
+}
