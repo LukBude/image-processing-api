@@ -5,7 +5,7 @@ import { BadRequestError } from '../../error/BadRequestError';
 
 const image = express.Router();
 
-image.get('/', async (req, res, next) => {
+image.get('/', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
     validateNumberOfRequestParams(req);
     const [name, width, height] = extractParams(req);
