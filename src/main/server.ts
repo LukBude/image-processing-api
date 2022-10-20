@@ -21,8 +21,8 @@ const limiter = rateLimit({
 });
 
 server.use(morgan('common', { stream: endpointAccessLogStream }));
-server.use(helmet());
 server.use(limiter);
+server.use(helmet());
 
 server.use('/api', routes);
 

@@ -33,9 +33,8 @@ describe('Test image service', () => {
 });
 
 async function createImageIfNotExists(path: string, name: string, width: number, height: number): Promise<void> {
-    if (fs.existsSync(path)) {
-        await fsPromises.unlink(path);
+    if (!fs.existsSync(path)) {
+        await ImageService.getImage(name, width, height);
     }
-    await ImageService.getImage(name, width, height);
 }
 
