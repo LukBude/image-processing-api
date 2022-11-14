@@ -10,7 +10,7 @@ The originally available images have the following names:
 * palmtunnel
 * santamonica
 
-## testing the REST API
+## Testing the REST API
 
 In order to test the REST API, you need to have nodJs installed. Clone this repository, navigate into it and open a console. This repository contains a package.json, which includes several node scripts. In order to test the REST API, run the node script "serve" by executing the command "npm run serve" inside your console. This command will start the express server on port 3000 of your localhost. Open your browser and send a valid GET request of the pattern:
 
@@ -20,6 +20,6 @@ If you want to retrieve the image "fjord" with dimensions 300px x 300px, send th
 
 http://localhost:3000/api/image?name=fjord&width=300&height=300
 
-## run jasmine tests
+## Run jasmine tests
 
 Both the endpoint and the image-resize service have been tested using jasmine. You can execute all unit tests by running the npm script "test".
