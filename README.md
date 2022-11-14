@@ -16,7 +16,7 @@ In order to test the REST API, you need to have nodJs installed. Open a console 
 
 http://localhost:3000/api/image?name={imageName}&width={width}&height={height}
 
-If you want to retrieve the image "fjord" with dimensions 300px + 300px, send the following GET request:
+If you want to retrieve the image "fjord" with dimensions 300px x 300px, send the following GET request:
 
 http://localhost:3000/api/image?name=fjord&width=300&height=300
 
