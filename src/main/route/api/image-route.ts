@@ -3,13 +3,14 @@ import { HttpStatusCode } from '../../error/HttpStatusCode';
 import { ImageService } from '../../service/ImageService';
 import { BadRequestError } from '../../error/BadRequestError';
 
-const image = express.Router();
+const imageRoute = express.Router();
+const imageService = new ImageService();
 
-image.get('/', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+imageRoute.get('/', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
     validateNumberOfRequestParams(req);
     const [name, width, height] = extractParams(req);
-    const responseImage = await ImageService.getImage(name, width, height);
+    const responseImage = await imageService.getImage(name, width, height);
     res.status(HttpStatusCode.OK).setHeader('content-type', 'image/jpg').send(responseImage);
   } catch (err) {
     return next(err);
@@ -30,4 +31,4 @@ function extractParams(request: express.Request): [string, number, number] {
   ];
 }
 
-export default image;
+export default imageRoute;
