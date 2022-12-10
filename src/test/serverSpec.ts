@@ -2,23 +2,9 @@ import supertest from 'supertest';
 import server from '../main/server';
 import { HttpStatusCode } from '../main/error/HttpStatusCode';
 
-interface RequestParams {
-  name?: string;
-  width?: string;
-  height?: string;
-}
-
-function createURL(requestParams: RequestParams): string {
-  const params = Object.keys(requestParams)
-    .filter((key: string) => key !== undefined)
-    .map((key: string) => `${key}=${requestParams[key as keyof typeof requestParams]}`)
-    .join('&');
-  return params.length === 0 ? '/api/image' : ['/api/image', '?', params].join('');
-}
-
-const request = supertest(server);
-
 describe('Test image endpoint response', () => {
+  const request = supertest(server);
+
   it('should return status OK for a valid request', async () => {
     const validRequest = createURL({ name: 'fjord', width: '300', height: '300' });
     const response = await request.get(validRequest);
@@ -86,4 +72,18 @@ describe('Test image endpoint response', () => {
     const response = await request.get(inValidRequest);
     expect(response.status).toBe(HttpStatusCode.NOT_FOUND);
   });
+
+  interface RequestParams {
+    name?: string;
+    width?: string;
+    height?: string;
+  }
+
+  function createURL(requestParams: RequestParams): string {
+    const params = Object.keys(requestParams)
+      .filter((key: string) => key !== undefined)
+      .map((key: string) => `${key}=${requestParams[key as keyof typeof requestParams]}`)
+      .join('&');
+    return params.length === 0 ? '/api/image' : ['/api/image', '?', params].join('');
+  }
 });

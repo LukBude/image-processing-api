@@ -1,10 +1,9 @@
 import express from 'express';
 import { HttpStatusCode } from '../../error/HttpStatusCode';
-import { ImageService } from '../../service/ImageService';
 import { BadRequestError } from '../../error/BadRequestError';
+import imageService from '../../service/ImageService';
 
 const imageRoute = express.Router();
-const imageService = new ImageService();
 
 imageRoute.get('/', async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {

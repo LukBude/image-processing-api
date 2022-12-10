@@ -1,11 +1,9 @@
 import fs, { promises as fsPromises } from 'fs';
 import path from 'path';
-import { ImageService } from '../../main/service/ImageService';
 import sharp from 'sharp';
+import imageService from '../../main/service/ImageService';
 
 describe('Test image service', () => {
-  const imageService = new ImageService();
-
   describe('Test getImage', () => {
     const imageDirPath = path.resolve('resources', 'images', 'fjord');
     const resizedImageFilePath = path.join(imageDirPath, 'fjord_300_300.jpg');

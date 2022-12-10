@@ -4,7 +4,7 @@ import fs, { promises as fsPromises } from 'fs';
 import { NotFoundError } from '../error/NotFoundError';
 import { BadRequestError } from '../error/BadRequestError';
 
-export class ImageService {
+class ImageService {
   async getImage(name: string, width: number, height: number): Promise<Buffer> {
     const [imageFilePath, resizedImageFilePath] = this.getPaths(name, width, height);
     this.validateImageName(imageFilePath, name);
@@ -39,3 +39,5 @@ export class ImageService {
     }
   }
 }
+
+export default new ImageService();
